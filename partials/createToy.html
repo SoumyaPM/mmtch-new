@@ -1,0 +1,49 @@
+<div class="container-fluid">
+    <a href="" ng-click="AddNewToyRow()" class="toy-create-plus"><i class="fa fa-plus fa-3x"></i></a> 
+
+	<div class="form-group toy-row" ng-show="rowVisible">
+
+			    <div class="row">
+			    	<div class="col-sm-2"><label> Toy Id: </label></div>
+			    	<div class="col-sm-2"><input type="text" ng-model="toyId" class="form-control" disabled="true"></div>
+			    </div>
+
+			    <div class="row">
+			    	<div class="col-sm-2"><label for="toyName"> Toy Name: </label></div>
+			    	<div class="col-sm-4"><input type="text" id="toyName" ng-model="toyName" required="true" class="form-control">
+			    	</div>
+			    </div>
+
+			    <div class="row">
+			    	<div class="col-sm-2"><label for="repeatSelect"> Category: </label></div>
+			    	<div class="col-sm-4">
+			    		<select name="repeatSelect" id="repeatSelect" ng-model="data.model" class="form-control">
+							<option ng-repeat="category in toyCategory" value="{{option.id}}">{{category.CategoryName}}</option>
+						</select>
+					</div>
+					<div class="col-sm-1"><input type="checkbox" class="checkbox"></div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-2"><label for="toyPrice">Price (in Rs.): </label></div>
+					<div class="col-sm-2"><input type="text" id="toyPrice" ng-model="toyPrice" required="true" class="form-control">
+					</div>
+					<div class="col-sm-1"><input type="checkbox" class="checkbox"></div>
+				</div>
+
+				<div class="row">
+					<div class="col-sm-2"><label for="createdDate">Created Date: </label></div>
+					<div class="col-sm-3"><input type="date" id="createdDate" ng-model="createdDate" class="form-control">
+					</div>
+				</div>
+
+			    <div class="row">
+			    	<div class="col-sm-2"><label for="toyDesc"> Desription: </label></div>
+			    	<div class="col-sm-6"><textarea id="toyDesc" ng-model="toyDesc" class="form-control"/>
+			    	</div>
+			    </div>
+	</div>
+	<div class="row" ng-show="rowVisible">
+		<button type="button" class="btn btn-primary pull-right" ng-click="AddNewToyCategory()">Add Toy</button>
+	</div>
+</div>
