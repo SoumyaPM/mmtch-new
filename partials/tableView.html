@@ -53,6 +53,11 @@
                             <span ng-show="sortOrder" class="fa fa-caret-up"></span>
                         </a>
                     </th>
+                    <th>
+                        <a href="" ng-click="">
+                            Custom Attribute
+                        </a>
+                    </th>
                 </tr>
             </thead>
             <tbody ng-repeat = "toyCat in toyCategory| orderBy:orderByField:sortOrder">
@@ -61,8 +66,12 @@
                     <td>{{toy.toyname.name}}</td>
                     <td>{{toy.toycategory.category}}</td>
                     <td>{{toy.toyprice.price | currency : "INR" : 2}}</td>
-                    <td ng-repeat = "attributes in toy.attributes[0]">
-                        {{attributes.label}} : {{attributes.value}}
+                    <td>
+                        <table ng-repeat = "attributes in toy.attributes[0]">
+                            <tbody>
+                                <td>{{attributes.label}} : {{attributes.value}}</td>
+                            </tbody>
+                        </table>
                     </td>
                 </tr>
             </tbody>

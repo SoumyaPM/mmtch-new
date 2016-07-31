@@ -33,17 +33,15 @@
         </div>
 	</div>
     
-    <div ng-repeat="cstmAttr in customAttributeArray">
-        <div class="row toy-row" ng-show="customAttributeRowVisible">
-            <input type="text" placeholder="Enter your custom attribute" ng-model="customAttribute.label" class="form-control attribute">
-            <input type="text" placeholder="Enter your custom value" ng-model="customAttribute.value" class="form-control attribute">
-            <input type="checkbox" class="checkbox" id="checked" ng-model="customAttribute.flag">
-            <button type="button" class="btn btn-primary btn-xs insert-attribute" ng-click="insertCustomAttribute()">Insert</button>
-        </div>
+    <div class="row toy-row" ng-show="customAttributeRowVisible">
+        <input type="text" placeholder="Enter your custom attribute" ng-model="customAttribute.label" class="form-control attribute">
+        <input type="text" placeholder="Enter your custom value" ng-model="customAttribute.value" class="form-control attribute">
+        <input type="checkbox" class="checkbox" id="checked" ng-model="customAttribute.flag">
+        <button type="button" class="btn btn-primary btn-xs insert-attribute" ng-click="insertCustomAttribute()">Insert</button>
     </div>
 
 	<div class="row add-toy" ng-show="rowVisible">
-		<button type="button" class="btn btn-primary" ng-click="addCustomAttribute()">Add Custom Attribute</button>
+		<button type="button" class="btn btn-primary" ng-click="addCustomAttribute()" ng-disabled = "customAttributeRowVisible">Add Custom Attribute</button>
         <button type="button" class="btn btn-primary pull-left" ng-click="reset()">Reset</button>
         <button type="button" class="btn btn-primary" ng-click="AddNewToy()">Add Toy</button>
 	</div>

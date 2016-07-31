@@ -122,6 +122,8 @@ app.controller("toyDashboardCtrl", ['$scope', '$http', function($scope, $http) {
         $scope.item = '';
         $scope.customAttributeRowVisible = '';
         $scope.customAttributes = [];
+        $scope.customAttributeRowVisible=false;
+        $scope.customAttributeArray = [];
     };
 
     $scope.insertCustomAttribute = function() {
