@@ -1,0 +1,71 @@
+<div class="row">
+    <div class="col-sm-2">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" placeholder="Search...">
+                <span class="input-group-btn">
+                <button class="btn btn-default" type="button">
+                    <i class="fa fa-search"></i>
+                </button>
+            </span>
+        </div>
+        <div>
+            <div><input type="checkbox" class="checkbox">Toy Id</div>
+            <div><input type="checkbox" class="checkbox">Toy Name</div>
+            <div><input type="checkbox" class="checkbox">Toy Category</div>
+            <div><input type="checkbox" class="checkbox">Toy Price</div>
+            <div ng-repeat = "toyCat in toyCategory">
+                <div ng-repeat = "toy in toyCat.items">
+                    <div ng-repeat = "attributes in toy.attributes[0]">
+                        {{attributes.label}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-sm-10">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>
+                        <a href="" ng-click="changeTableOrder('toy.toyid.id')">
+                            Toy Id 
+                            <span ng-show="!sortOrder" class="fa fa-caret-down"></span>
+                            <span ng-show="sortOrder" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="" ng-click="changeTableOrder('toy.toyname.name')">
+                            Toy Name 
+                            <span ng-show="!sortOrder" class="fa fa-caret-down"></span>
+                            <span ng-show="sortOrder" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="" ng-click="changeTableOrder('toy.toycategory.category')">
+                            Toy Category 
+                            <span ng-show="!sortOrder" class="fa fa-caret-down"></span>
+                            <span ng-show="sortOrder" class="fa fa-caret-up"></span>
+                        </a></th>
+                    <th>
+                        <a href="" ng-click="changeTableOrder('toy.toyprice.price')">
+                            Price 
+                            <span ng-show="!sortOrder" class="fa fa-caret-down"></span>
+                            <span ng-show="sortOrder" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                </tr>
+            </thead>
+            <tbody ng-repeat = "toyCat in toyCategory| orderBy:orderByField:sortOrder">
+                <tr ng-repeat = "toy in toyCat.items">
+                    <td>{{toy.toyid.id}}</td>
+                    <td>{{toy.toyname.name}}</td>
+                    <td>{{toy.toycategory.category}}</td>
+                    <td>{{toy.toyprice.price | currency : "INR" : 2}}</td>
+                    <td ng-repeat = "attributes in toy.attributes[0]">
+                        {{attributes.label}} : {{attributes.value}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

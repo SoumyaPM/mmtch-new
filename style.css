@@ -284,7 +284,7 @@ body {
     margin-right: 282px;
     border-left: 1px solid #e7e7e7;
     background-color: dimgray;
-    min-height: 150px;
+    min-height: 74px;
     margin-top: 25px;
     margin-bottom: 12px;
 }
@@ -317,6 +317,57 @@ select {
     margin-right: 294px;
 }
 
-.category {
-    
+.field-heading {
+    position: inherit;
+    margin-left: 266px;
+    margin-right: 282px;
+    border-left: 1px solid #e7e7e7;
+    background-color: dimgray;
+    min-height: 30px;
+    margin-top: 25px;
+}
+
+.field-heading span {
+    font-size: 16px;
+    color: white;
+    font-weight: 700;
+    padding-left: 14px;
+}
+
+.add-toy button:first-child {
+        margin-left: 466px;
+}
+
+.add-toy button:nth-child(2){
+    margin-left: 282px;
+}
+
+.attribute {
+    float: left;
+    margin: 20px;
+    width: 30%
+}
+
+#checked {
+    margin-top: 27px;
+    float: left;
+}
+
+.insert-attribute {
+    margin: 26px;
+}
+
+.toy-details {
+    min-height: 35px;
+    margin-left: 266px;
+    border: 1px solid;
+}
+
+.toy-details div {
+    float: left;
+    margin-left: 10px;
+}
+
+.table-striped {
+    margin-left: 40px;;
 }
