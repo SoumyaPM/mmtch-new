@@ -106,6 +106,7 @@ app.controller("toyDashboardCtrl", ['$scope', '$http', function($scope, $http) {
     
     /**Method to add new custom attribute*/
     $scope.addCustomAttribute = function() {
+        debugger
         $scope.customAttributeRowVisible = true;
         $scope.customAttributeArray.push('customAttribute' + $scope.counter);
         $scope.counter++;
@@ -144,5 +145,13 @@ app.controller("tableViewCtrl", ['$scope', '$http', function($scope, $http) {
     $scope.changeTableOrder = function(sortField){
         $scope.orderByField = sortField;
         $scope.sortOrder = !$scope.sortOrder;
+    };
+    $scope.showHide = function(key) {
+        $scope['hide'+key] = !$scope['hide'+key];
+        angular.forEach($scope.toyCategory, function(category) {
+            angular.forEach(category.items, function(item) {
+                item[key].hideFlag = !item[key].hideFlag;
+            });
+        });
     };
 }]);

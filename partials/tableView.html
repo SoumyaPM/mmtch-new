@@ -9,15 +9,17 @@
             </span>
         </div>
         <div>
-            <div><input type="checkbox" class="checkbox">Toy Id</div>
-            <div><input type="checkbox" class="checkbox">Toy Name</div>
-            <div><input type="checkbox" class="checkbox">Toy Category</div>
-            <div><input type="checkbox" class="checkbox">Toy Price</div>
             <div ng-repeat = "toyCat in toyCategory">
-                <div ng-repeat = "toy in toyCat.items">
-                    <div ng-repeat = "attributes in toy.attributes[0]">
-                        {{attributes.label}}
+                <div ng-repeat = "(toyKey, toyValue) in toyCat.items">
+                    <div ng-repeat = "(key,value) in toyValue">
+                        <span ng-if="value.flag"><input type="checkbox" ng-click="showHide(key)">{{key}}</span>
+                        <div ng-if="key==='attributes'" ng-repeat = "attribute in value">
+                            <div ng-repeat="attr in attribute">
+                                <span ng-if="attr.flag">{{attr.label}}</span>
+                            </div>
+                        </div>
                     </div>
+                    
                 </div>
             </div>
         </div>
@@ -26,27 +28,27 @@
         <table class="table table-striped">
             <thead>
                 <tr>
-                    <th>
+                    <th ng-hide="hideid">
                         <a href="" ng-click="changeTableOrder('toy.toyid.id')">
-                            Toy Id 
+                            Toy Id {{toy.toyid.id}}
                             <span ng-show="!sortOrder" class="fa fa-caret-down"></span>
                             <span ng-show="sortOrder" class="fa fa-caret-up"></span>
                         </a>
                     </th>
-                    <th>
+                    <th ng-hide="hidetoyname">
                         <a href="" ng-click="changeTableOrder('toy.toyname.name')">
                             Toy Name 
                             <span ng-show="!sortOrder" class="fa fa-caret-down"></span>
                             <span ng-show="sortOrder" class="fa fa-caret-up"></span>
                         </a>
                     </th>
-                    <th>
+                    <th ng-hide="hidetoycategory">
                         <a href="" ng-click="changeTableOrder('toy.toycategory.category')">
                             Toy Category 
                             <span ng-show="!sortOrder" class="fa fa-caret-down"></span>
                             <span ng-show="sortOrder" class="fa fa-caret-up"></span>
                         </a></th>
-                    <th>
+                    <th ng-hide="hidetoyprice">
                         <a href="" ng-click="changeTableOrder('toy.toyprice.price')">
                             Price 
                             <span ng-show="!sortOrder" class="fa fa-caret-down"></span>
@@ -62,10 +64,10 @@
             </thead>
             <tbody ng-repeat = "toyCat in toyCategory| orderBy:orderByField:sortOrder">
                 <tr ng-repeat = "toy in toyCat.items">
-                    <td>{{toy.toyid.id}}</td>
-                    <td>{{toy.toyname.name}}</td>
-                    <td>{{toy.toycategory.category}}</td>
-                    <td>{{toy.toyprice.price | currency : "INR" : 2}}</td>
+                    <td ng-hide="toy.toyid.hideFlag">{{toy.toyid.id}}</td>
+                    <td ng-hide="toy.toyname.hideFlag">{{toy.toyname.name}}</td>
+                    <td ng-hide="toy.toycategory.hideFlag">{{toy.toycategory.category}}</td>
+                    <td ng-hide="toy.toyprice.hideFlag">{{toy.toyprice.price | currency : "INR" : 2}}</td>
                     <td>
                         <table ng-repeat = "attributes in toy.attributes[0]">
                             <tbody>
